@@ -12,6 +12,7 @@ namespace basicRoguelike
     {
         public const int Width = 80;
         public const int Height = 25;
+        private static SadConsole.Entities.Entity player;
         
         [STAThread]
         static void Main(string[] args)
@@ -20,6 +21,9 @@ namespace basicRoguelike
             SadConsole.Game.Create(Width, Height);
 
             //Hook the start event so we can add consoles to the system
+            SadConsole.Game.OnInitialize = Init;
+
+            //Hook the update event that happens each frame so we can trap keys and respond
             SadConsole.Game.OnUpdate = Update;
 
             //Start the game
@@ -55,6 +59,10 @@ namespace basicRoguelike
             SadConsole.Global.CurrentScreen = startingConsole;
         }
 
-        
+        private static void CreatePlayer()
+        {
+            player = new SadConsole.Entities.Entity(1, 1);
+            player.Animation.CurrentFrame[0].Glyph = '@'
+        }
     }
 }
