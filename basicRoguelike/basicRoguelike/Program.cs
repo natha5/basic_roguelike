@@ -3,6 +3,7 @@ using SadConsole;
 using Console = SadConsole.Console;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 namespace basicRoguelike
 {
@@ -26,7 +27,7 @@ namespace basicRoguelike
 
             //code here will not run until the game window closes
 
-            SadConsole.Game.Instance.Dispose;
+            SadConsole.Game.Instance.Dispose();
         }
 
         private static void Update(GameTime time)
@@ -38,6 +39,20 @@ namespace basicRoguelike
             {
                 SadConsole.Settings.ToggleFullScreen();
             }
+        }
+
+        private static void Init()
+        {
+            // any custom loading and prep. using sample console for now
+
+            Console startingConsole = new Console(Width, Height);
+            startingConsole.FillWithRandomGarbage();
+            startingConsole.Fill(new Rectangle(3, 3, 27, 5), null, Color.Black, 0, SpriteEffects.None);
+            startingConsole.Print(6, 5, "Hello from sadconsole", ColorAnsi.CyanBright);
+
+            //set our new console as the thing to render and process
+
+            SadConsole.Global.CurrentScreen = startingConsole;
         }
 
         
