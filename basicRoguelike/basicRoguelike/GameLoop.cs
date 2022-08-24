@@ -73,9 +73,13 @@ namespace basicRoguelike
         private static void Init()
         {
             // any custom loading and prep. using sample console for now
+            //Build walls and floors:
+            CreateWalls();
+            CreateFloors();
 
-            Console startingConsole = new Console(Width, Height);
-            //startingConsole.FillWithRandomGarbage();
+
+            Console startingConsole = new ScrollingConsole(Width, Height, Global.FontDefault, new Rectangle(0,0,Width,Height), _tiles);
+           
             startingConsole.Fill(new Rectangle(3, 3, 27, 5), null, Color.Black, 0, SpriteEffects.None);
             startingConsole.Print(6, 5, "Hello from sadconsole", ColorAnsi.CyanBright);
 
@@ -113,7 +117,6 @@ namespace basicRoguelike
         private static void CreateWalls()
         {
             _tiles = new TileBase[Width * Height];
-
             for (int i = 0; i < _tiles.Length; i++)
             {
                 _tiles[i] = new TileWall();
