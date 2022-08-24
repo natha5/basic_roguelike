@@ -109,5 +109,15 @@ namespace basicRoguelike
                 }
             }
         }
+
+        private static void CreateWalls()
+        {
+            _tiles = new TileBase[Width * Height];
+
+            for (int i = 0; i < _tiles.Length; i++)
+            {
+                _tiles[i] = new TileWall();
+            }
+        }
     }
 }
