@@ -4,6 +4,7 @@ using Console = SadConsole.Console;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Linq.Expressions;
 
 namespace basicRoguelike
 {
@@ -13,6 +14,9 @@ namespace basicRoguelike
         public const int Width = 80;
         public const int Height = 25;
         private static SadConsole.Entities.Entity player;
+        private static TileBase[] _tiles;
+        private const int _roomWidth = 10;
+        private const int _roomHeight = 20;
         
         [STAThread]
         static void Main(string[] args)
@@ -92,6 +96,18 @@ namespace basicRoguelike
             player.Animation.CurrentFrame[0].Glyph = '@';
             player.Animation.CurrentFrame[0].Foreground = Color.HotPink;
             player.Position = new Point(20, 10);
+        }
+
+        private static void CreateFloors()
+        {
+            for(int x = 0; x< _roomWidth; x++)
+            {
+                for (int y = 0; y < _roomHeight; y++)
+                {
+                    //calcualtes index in the array based on y of tile, width of map and x of tile
+                    _tiles[y * Width + x] = new TileFloor();
+                }
+            }
         }
     }
 }
