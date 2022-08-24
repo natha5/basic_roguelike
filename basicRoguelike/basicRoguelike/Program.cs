@@ -69,6 +69,8 @@ namespace basicRoguelike
         {
             player = new SadConsole.Entities.Entity(1, 1);
             player.Animation.CurrentFrame[0].Glyph = '@';
+            player.Animation.CurrentFrame[0].Foreground = Color.HotPink;
+            player.Position = new Point(20, 10);
         }
     }
 }
