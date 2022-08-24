@@ -8,10 +8,22 @@ namespace basicRoguelike
 
     public abstract class TileBase : Cell
     {
-        //Default constructor
-        public TileBase() : base()
-        {
+        //movement and line of sight flags
+        protected bool IsBlockingMove;
+        protected bool IsBlockingLOS;
 
+        //Tiles name
+        protected string Name;
+
+        //each tilebase has a forground and background colour and glyph
+        //IsBlockingMove and IsBlockingLOs are optional, default false
+
+        //Default constructor
+        public TileBase(Color foreground, Color background, int glyph, bool blockingMove=false, bool blockingLOS=false, String name="") : base(foreground, background, glyph)
+        {
+            IsBlockingMove = blockingMove;
+            IsBlockingLOS = blockingLOS;
+            Name = name;
         }
     }
 }
