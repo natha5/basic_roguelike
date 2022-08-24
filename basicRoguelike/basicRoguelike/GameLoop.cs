@@ -8,7 +8,7 @@ using System.Runtime.Remoting.Metadata.W3cXsd2001;
 namespace basicRoguelike
 {
     
-    class Program
+    class GameLoop
     {
         public const int Width = 80;
         public const int Height = 25;
