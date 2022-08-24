@@ -43,6 +43,11 @@ namespace basicRoguelike
             {
                 SadConsole.Settings.ToggleFullScreen();
             }
+
+            if (SadConsole.Global.KeyboardState.IsKeyPressed(Microsoft.Xna.Framework.Input.Keys.Up))
+            {
+                player.Position += new Point(0, -1);
+            }
         }
 
         private static void Init()
