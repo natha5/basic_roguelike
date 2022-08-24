@@ -29,6 +29,17 @@ namespace basicRoguelike
             SadConsole.Game.Instance.Dispose;
         }
 
+        private static void Update(GameTime time)
+        {
+            // called each logic update
+            //as an example, use f5 to make game full screen
+
+            if (SadConsole.Global.KeyboardState.IsKeyReleased(Microsoft.Xna.Framework.Input.Keys.F5))
+            {
+                SadConsole.Settings.ToggleFullScreen();
+            }
+        }
+
         
     }
 }
