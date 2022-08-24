@@ -50,19 +50,25 @@ namespace basicRoguelike
             // any custom loading and prep. using sample console for now
 
             Console startingConsole = new Console(Width, Height);
-            startingConsole.FillWithRandomGarbage();
+            //startingConsole.FillWithRandomGarbage();
             startingConsole.Fill(new Rectangle(3, 3, 27, 5), null, Color.Black, 0, SpriteEffects.None);
             startingConsole.Print(6, 5, "Hello from sadconsole", ColorAnsi.CyanBright);
 
             //set our new console as the thing to render and process
 
             SadConsole.Global.CurrentScreen = startingConsole;
+
+            CreatePlayer();
+
+            //add the player entity to the console so it will display on screen
+
+            startingConsole.Children.Add(player);
         }
 
         private static void CreatePlayer()
         {
             player = new SadConsole.Entities.Entity(1, 1);
-            player.Animation.CurrentFrame[0].Glyph = '@'
+            player.Animation.CurrentFrame[0].Glyph = '@';
         }
     }
 }
